@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using _00_BaseGame._00_Script._00_Controller.GamePlayController;
 
 public class InputManager : MonoBehaviour
 {
