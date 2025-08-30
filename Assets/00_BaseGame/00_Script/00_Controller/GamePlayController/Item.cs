@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
+    [SerializeField] private EItemName itemName;
+    public EItemName ItemName => itemName;
+    
     [SerializeField] private Rigidbody rig;
     [SerializeField] private Collider objCollider;
     [SerializeField] private Renderer objRenderer;

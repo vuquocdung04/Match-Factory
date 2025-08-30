@@ -178,6 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ce2586237dc4e6abc58432a0496ce1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemName: 2
   rig: {fileID: 5708743153201541483}
   objCollider: {fileID: 1185418704884061185}
   objRenderer: {fileID: 6442298406000190570}

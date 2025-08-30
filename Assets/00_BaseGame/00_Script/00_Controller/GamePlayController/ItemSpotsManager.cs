@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemSpotsManager : MonoBehaviour
@@ -6,12 +7,15 @@ public class ItemSpotsManager : MonoBehaviour
     [SerializeField] private ItemSpot[] itemSpots;
     [SerializeField] private Vector3 itemLocalPositionOnSpot;
     [SerializeField] private Vector3 itemLocalScaleOnSpot;
+    private bool isBusy;
+    private Dictionary<EItemName, ItemMergeData> itemMergeDataDictionary = new();
 
     public void Init()
     {
         InputManager.itemClicked += OnItemClicked;
         StoreSpots();
     }
+
 
     private void OnDestroy()
     {
@@ -20,18 +24,34 @@ public class ItemSpotsManager : MonoBehaviour
 
     private void OnItemClicked(Item item)
     {
+        if (isBusy)
+        {
+            Debug.Log("Item spot is busy");
+            return;
+        }
+
         if (!IsFreeSpotAvailable())
         {
             Debug.LogWarning("No item spot available");
         }
 
+        isBusy = true;
         HandleItemClicked(item);
-
     }
 
     private void HandleItemClicked(Item item)
     {
-        MoveItemToFirstSpot(item);
+        if (itemMergeDataDictionary.ContainsKey(item.ItemName))
+        {
+            Debug.Log("Merge data found for: " + item.name);
+            HandleItemMergeFound(item);
+        }
+        else
+            MoveItemToFirstSpot(item);
+    }
+
+    private void HandleItemMergeFound(Item item)
+    {
     }
 
     private void MoveItemToFirstSpot(Item item)
@@ -42,20 +62,47 @@ public class ItemSpotsManager : MonoBehaviour
             Debug.LogError("Target spot is null");
             return;
         }
+
+        CreateItemMergeData(item);
+
         targetSpot.Populate(item);
         item.transform.localPosition = itemLocalPositionOnSpot;
         item.transform.localScale = itemLocalScaleOnSpot;
         item.transform.localRotation = Quaternion.identity;
-        item.GetComponent<Item>().DisableShadow();
-        item.GetComponent<Item>().DisablePhysic();
+        item.DisableShadow();
+        item.DisablePhysic();
+
+        HandleFirstItemReachedSpot(item);
+    }
+
+    private void HandleFirstItemReachedSpot(Item item)
+    {
+        CheckForGameOver();
+    }
+
+    private void CheckForGameOver()
+    {
+        if (!GetFreeSpot())
+            Debug.Log("Game over");
+        else
+        {
+            isBusy = false;
+        }
+    }
+
+    private void CreateItemMergeData(Item item)
+    {
+        itemMergeDataDictionary.Add(item.ItemName, new ItemMergeData(item));
+        Debug.Log("Item added: " +  item.name + "key to dictionary");
     }
 
     private ItemSpot GetFreeSpot()
     {
         for (int i = 0; i < itemSpots.Length; i++)
         {
-            if(itemSpots[i].IsEmpty()) return itemSpots[i];
+            if (itemSpots[i].IsEmpty()) return itemSpots[i];
         }
+
         return null;
     }
 
