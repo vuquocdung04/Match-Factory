@@ -53,7 +53,6 @@ public class ItemSpotsManager : MonoBehaviour
     {
         ItemSpot idealSpot = GetIdealSpotFor(item);
         itemMergeDataDictionary[item.ItemName].Add(item);
-        Debug.Log("Wtf");
         TryMoveItemToIdealSpot(item, idealSpot);
     }
 
@@ -88,10 +87,38 @@ public class ItemSpotsManager : MonoBehaviour
 
     private void HandleIdealSpotFull(Item item, ItemSpot idealSpot)
     {
-        
+        MoveAllItemsToTheRightFrom(idealSpot,item);
     }
 
-    private void MoveItemToSpot(Item item, ItemSpot targetSpot)
+    private void MoveAllItemsToTheRightFrom(ItemSpot idealSpot, Item itemToPlace)
+    {
+        int spotIndex = idealSpot.transform.GetSiblingIndex();
+        for (int i = spots.Length - 2; i >= spotIndex; i--)
+        {
+            // Item at index spotIndex, should go on spot spotIndex + 1
+            ItemSpot spot = spots[i];
+            
+            if(spot.IsEmpty()) continue;
+            
+            
+            Item item = spot.Item;
+            
+            spot.Clear();
+
+            ItemSpot targetSpot = spots[i + 1];
+
+            if (!targetSpot.IsEmpty())
+            {
+                Debug.LogWarning("Warning, this should no happen");
+                isBusy = false;
+                return;
+            }
+            MoveItemToSpot(item,targetSpot, false);
+        }
+        MoveItemToSpot(itemToPlace,idealSpot);
+    }
+
+    private void MoveItemToSpot(Item item, ItemSpot targetSpot, bool checkForMerge = true)
     {
         targetSpot.Populate(item);
         
@@ -103,11 +130,12 @@ public class ItemSpotsManager : MonoBehaviour
         
         item.DisablePhysic();
         
-        HandleItemReachedSpot(item);
+        HandleItemReachedSpot(item, checkForMerge);
     }
 
-    private void HandleItemReachedSpot(Item item)
+    private void HandleItemReachedSpot(Item item, bool checkForMerge = true)
     {
+        if(!checkForMerge) return;
         if (itemMergeDataDictionary[item.ItemName].CanMergeItem())
         {
             MergeItems(itemMergeDataDictionary[item.ItemName]);

@@ -3,7 +3,7 @@ using UnityEngine;
 public class ItemSpot : MonoBehaviour
 {
     [SerializeField] private Item item;
-
+    public Item Item => item;
     public void Populate(Item item)
     {
         this.item = item;
