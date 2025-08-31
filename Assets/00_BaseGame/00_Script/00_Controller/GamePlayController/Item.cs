@@ -4,12 +4,20 @@ public class Item : MonoBehaviour
 {
     [SerializeField] private EItemName itemName;
     public EItemName ItemName => itemName;
+
+    private ItemSpot spot;
+    public ItemSpot Spot => spot;
     
     [SerializeField] private Rigidbody rig;
     [SerializeField] private Collider objCollider;
     [SerializeField] private Renderer objRenderer;
     [SerializeField] private Material baseMaterial;
 
+    public void AssignSpot(ItemSpot spot)
+    {
+        this.spot = spot;
+    }
+    
     public void DisableShadow()
     {
         objRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;

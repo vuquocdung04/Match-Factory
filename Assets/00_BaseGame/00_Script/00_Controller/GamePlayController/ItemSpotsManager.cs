@@ -4,10 +4,10 @@ using UnityEngine;
 public class ItemSpotsManager : MonoBehaviour
 {
     [SerializeField] private Transform itemSpotParent;
-    [SerializeField] private ItemSpot[] itemSpots;
+    [SerializeField] private ItemSpot[] spots;
     [SerializeField] private Vector3 itemLocalPositionOnSpot;
     [SerializeField] private Vector3 itemLocalScaleOnSpot;
-    private bool isBusy;
+    [SerializeField] private bool isBusy;
     private Dictionary<EItemName, ItemMergeData> itemMergeDataDictionary = new();
 
     public void Init()
@@ -26,53 +26,123 @@ public class ItemSpotsManager : MonoBehaviour
     {
         if (isBusy)
         {
-            Debug.Log("Item spot is busy");
+            Debug.Log("ItemSpotManager is busy");
             return;
         }
 
         if (!IsFreeSpotAvailable())
         {
-            Debug.LogWarning("No item spot available");
+            Debug.LogWarning("No free spot available");
+            return;
         }
 
         isBusy = true;
+        
         HandleItemClicked(item);
     }
 
     private void HandleItemClicked(Item item)
     {
         if (itemMergeDataDictionary.ContainsKey(item.ItemName))
+            HandleItemMergeDataFound(item);
+        else
+            MoveItemToFirstFreeSpot(item);
+    }
+
+    private void HandleItemMergeDataFound(Item item)
+    {
+        ItemSpot idealSpot = GetIdealSpotFor(item);
+        itemMergeDataDictionary[item.ItemName].Add(item);
+        Debug.Log("Wtf");
+        TryMoveItemToIdealSpot(item, idealSpot);
+    }
+
+    private ItemSpot GetIdealSpotFor(Item item)
+    {
+        List<Item> lsItems = itemMergeDataDictionary[item.ItemName].lsItems;
+        List<ItemSpot> lsItemSpots = new  List<ItemSpot>();
+
+        for (int i = 0; i < lsItems.Count; i++)
         {
-            Debug.Log("Merge data found for: " + item.name);
-            HandleItemMergeFound(item);
+            lsItemSpots.Add(lsItems[i].Spot);
+        }
+
+        if (lsItemSpots.Count >= 2)
+        {
+            lsItemSpots.Sort((a,b) => b.transform.GetSiblingIndex().CompareTo(a.transform.GetSiblingIndex()));
+        }
+        int idealSpotIndex = lsItemSpots[0].transform.GetSiblingIndex() + 1;
+        return spots[idealSpotIndex];
+    }
+
+    private void TryMoveItemToIdealSpot(Item item, ItemSpot idealSpot)
+    {
+        if (!idealSpot.IsEmpty())
+        {
+            HandleIdealSpotFull(item, idealSpot);
+            Debug.Log("Ideal not empty");
+            return;
+        }
+        MoveItemToSpot(item, idealSpot);
+    }
+
+    private void HandleIdealSpotFull(Item item, ItemSpot idealSpot)
+    {
+        
+    }
+
+    private void MoveItemToSpot(Item item, ItemSpot targetSpot)
+    {
+        targetSpot.Populate(item);
+        
+        item.transform.localPosition = itemLocalPositionOnSpot;
+        item.transform.localScale = itemLocalScaleOnSpot;
+        item.transform.localRotation = Quaternion.identity;
+        
+        item.DisableShadow();
+        
+        item.DisablePhysic();
+        
+        HandleItemReachedSpot(item);
+    }
+
+    private void HandleItemReachedSpot(Item item)
+    {
+        if (itemMergeDataDictionary[item.ItemName].CanMergeItem())
+        {
+            MergeItems(itemMergeDataDictionary[item.ItemName]);
         }
         else
-            MoveItemToFirstSpot(item);
+        {
+            CheckForGameOver();
+        }
     }
 
-    private void HandleItemMergeFound(Item item)
+    private void MergeItems(ItemMergeData itemMergeData)
     {
+        List<Item> lsItems = itemMergeData.lsItems;
+        //Remove from dictionary
+        itemMergeDataDictionary.Remove(itemMergeData.itemName);
+
+        for (int i = 0; i < lsItems.Count; i++)
+        {
+            lsItems[i].Spot.Clear();
+            Destroy(lsItems[i].gameObject);
+        }
+        isBusy = false;
     }
 
-    private void MoveItemToFirstSpot(Item item)
+    private void MoveItemToFirstFreeSpot(Item item)
     {
         ItemSpot targetSpot = GetFreeSpot();
-        if (!targetSpot)
+        if (targetSpot == null)
         {
             Debug.LogError("Target spot is null");
             return;
         }
 
         CreateItemMergeData(item);
-
-        targetSpot.Populate(item);
-        item.transform.localPosition = itemLocalPositionOnSpot;
-        item.transform.localScale = itemLocalScaleOnSpot;
-        item.transform.localRotation = Quaternion.identity;
-        item.DisableShadow();
-        item.DisablePhysic();
-
-        HandleFirstItemReachedSpot(item);
+        MoveItemToSpot(item,targetSpot);
     }
 
     private void HandleFirstItemReachedSpot(Item item)
@@ -86,6 +156,7 @@ public class ItemSpotsManager : MonoBehaviour
             Debug.Log("Game over");
         else
         {
+            Debug.LogError("Not Over");
             isBusy = false;
         }
     }
@@ -98,9 +169,9 @@ public class ItemSpotsManager : MonoBehaviour
 
     private ItemSpot GetFreeSpot()
     {
-        for (int i = 0; i < itemSpots.Length; i++)
+        for (int i = 0; i < spots.Length; i++)
         {
-            if (itemSpots[i].IsEmpty()) return itemSpots[i];
+            if (spots[i].IsEmpty()) return spots[i];
         }
 
         return null;
@@ -108,18 +179,18 @@ public class ItemSpotsManager : MonoBehaviour
 
     private void StoreSpots()
     {
-        itemSpots = new ItemSpot[itemSpotParent.childCount];
+        spots = new ItemSpot[itemSpotParent.childCount];
         for (int i = 0; i < itemSpotParent.childCount; i++)
         {
-            itemSpots[i] = itemSpotParent.GetChild(i).GetComponent<ItemSpot>();
+            spots[i] = itemSpotParent.GetChild(i).GetComponent<ItemSpot>();
         }
     }
 
     private bool IsFreeSpotAvailable()
     {
-        for (int i = 0; i < itemSpotParent.childCount; i++)
+        for (int i = 0; i < spots.Length; i++)
         {
-            if (itemSpots[i].IsEmpty()) return true;
+            if (spots[i].IsEmpty()) return true;
         }
 
         return false;
