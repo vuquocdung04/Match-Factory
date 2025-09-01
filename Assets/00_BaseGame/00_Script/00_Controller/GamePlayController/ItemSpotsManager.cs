@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -82,7 +83,7 @@ public class ItemSpotsManager : MonoBehaviour
             Debug.Log("Ideal not empty");
             return;
         }
-        MoveItemToSpot(item, idealSpot);
+        MoveItemToSpot(item, idealSpot, ()=> HandleItemReachedSpot(item));
     }
 
     private void HandleIdealSpotFull(Item item, ItemSpot idealSpot)
@@ -113,12 +114,12 @@ public class ItemSpotsManager : MonoBehaviour
                 isBusy = false;
                 return;
             }
-            MoveItemToSpot(item,targetSpot, false);
+            MoveItemToSpot(item,targetSpot, ()=> HandleItemReachedSpot(item,false));
         }
-        MoveItemToSpot(itemToPlace,idealSpot);
+        MoveItemToSpot(itemToPlace,idealSpot, ()=> HandleItemReachedSpot(itemToPlace));
     }
 
-    private void MoveItemToSpot(Item item, ItemSpot targetSpot, bool checkForMerge = true)
+    private void MoveItemToSpot(Item item, ItemSpot targetSpot, Action callback)
     {
         targetSpot.Populate(item);
         
@@ -130,7 +131,8 @@ public class ItemSpotsManager : MonoBehaviour
         
         item.DisablePhysic();
         
-        HandleItemReachedSpot(item, checkForMerge);
+        callback?.Invoke();
+        //HandleItemReachedSpot(item, checkForMerge);
     }
 
     private void HandleItemReachedSpot(Item item, bool checkForMerge = true)
@@ -157,7 +159,39 @@ public class ItemSpotsManager : MonoBehaviour
             lsItems[i].Spot.Clear();
             Destroy(lsItems[i].gameObject);
         }
+
+        MoveAllItemsToTheLeft();
+    }
+
+    private void MoveAllItemsToTheLeft()
+    {
+        for (int i = 3; i < spots.Length; i++)
+        {
+            ItemSpot spot = spots[i];
+            
+            if(spot.IsEmpty()) continue;
+            
+            Item item = spot.Item;
+            
+            ItemSpot targetSpot = spots[i - 3];
+
+            if (!targetSpot.IsEmpty())
+            {
+                isBusy = false;
+                return;
+            }
+            spot.Clear();
+            
+            MoveItemToSpot(item, targetSpot, ()=> HandleItemReachedSpot(item));
+        }
+
+        HandleAllItemsMovedToTheLeft();
+    }
+
+    private void HandleAllItemsMovedToTheLeft()
+    {
         isBusy = false;
+        
     }
 
     private void MoveItemToFirstFreeSpot(Item item)
@@ -170,7 +204,8 @@ public class ItemSpotsManager : MonoBehaviour
         }
 
         CreateItemMergeData(item);
-        MoveItemToSpot(item,targetSpot);
+        
+        MoveItemToSpot(item,targetSpot, () => HandleFirstItemReachedSpot(item));
     }
 
     private void HandleFirstItemReachedSpot(Item item)
