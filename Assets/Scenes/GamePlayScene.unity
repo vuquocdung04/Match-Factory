@@ -308,6 +308,8 @@ MonoBehaviour:
   itemLocalPositionOnSpot: {x: 0, y: 0.09, z: 0}
   itemLocalScaleOnSpot: {x: 0.13, y: 0.13, z: 0.13}
   isBusy: 0
+  animationDuration: 0.15
+  animationEase: 9
 --- !u!1 &388978017
 GameObject:
   m_ObjectHideFlags: 0

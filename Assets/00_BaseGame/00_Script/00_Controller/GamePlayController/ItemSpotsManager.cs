@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class ItemSpotsManager : MonoBehaviour
@@ -9,6 +10,11 @@ public class ItemSpotsManager : MonoBehaviour
     [SerializeField] private Vector3 itemLocalPositionOnSpot;
     [SerializeField] private Vector3 itemLocalScaleOnSpot;
     [SerializeField] private bool isBusy;
+
+    [Header("Animation Setting"), Space(5)] 
+    [SerializeField] private float animationDuration = 0.15f;
+    [SerializeField] private Ease animationEase = Ease.OutCubic;
+    
     private Dictionary<EItemName, ItemMergeData> itemMergeDataDictionary = new();
 
     public void Init()
@@ -123,20 +129,21 @@ public class ItemSpotsManager : MonoBehaviour
     {
         targetSpot.Populate(item);
         
-        item.transform.localPosition = itemLocalPositionOnSpot;
-        item.transform.localScale = itemLocalScaleOnSpot;
-        item.transform.localRotation = Quaternion.identity;
+        item.transform.DOLocalMove(itemLocalPositionOnSpot, animationDuration).SetEase(animationEase);
+        item.transform.DOScale(itemLocalScaleOnSpot, animationDuration);
+        item.transform.DOLocalRotate(Vector3.zero, animationDuration).OnComplete(delegate
+        {
+            callback?.Invoke();
+        });
         
         item.DisableShadow();
         
         item.DisablePhysic();
-        
-        callback?.Invoke();
-        //HandleItemReachedSpot(item, checkForMerge);
     }
 
     private void HandleItemReachedSpot(Item item, bool checkForMerge = true)
     {
+        item.Spot.BumpDown();
         if(!checkForMerge) return;
         if (itemMergeDataDictionary[item.ItemName].CanMergeItem())
         {
@@ -159,12 +166,15 @@ public class ItemSpotsManager : MonoBehaviour
             lsItems[i].Spot.Clear();
             Destroy(lsItems[i].gameObject);
         }
-
-        MoveAllItemsToTheLeft();
+        if(itemMergeDataDictionary.Count <= 0) isBusy = false;
+        else
+            MoveAllItemsToTheLeft(HandleAllItemsMovedToTheLeft);
     }
 
-    private void MoveAllItemsToTheLeft()
+    private void MoveAllItemsToTheLeft(Action callback)
     {
+        bool callbackTriggered = false;
+        
         for (int i = 3; i < spots.Length; i++)
         {
             ItemSpot spot = spots[i];
@@ -182,10 +192,16 @@ public class ItemSpotsManager : MonoBehaviour
             }
             spot.Clear();
             
-            MoveItemToSpot(item, targetSpot, ()=> HandleItemReachedSpot(item));
+            callback += ()=> HandleItemReachedSpot(item, false);
+            MoveItemToSpot(item, targetSpot,callback);
+            
+            callbackTriggered = true;
         }
 
-        HandleAllItemsMovedToTheLeft();
+        if (!callbackTriggered)
+        {
+            callback?.Invoke();
+        }
     }
 
     private void HandleAllItemsMovedToTheLeft()
@@ -210,6 +226,7 @@ public class ItemSpotsManager : MonoBehaviour
 
     private void HandleFirstItemReachedSpot(Item item)
     {
+        item.Spot.BumpDown();
         CheckForGameOver();
     }
 
