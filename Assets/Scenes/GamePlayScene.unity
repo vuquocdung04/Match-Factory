@@ -169,6 +169,9 @@ MonoBehaviour:
   goUpDistance: 0.15
   goUpDuration: 0.15
   goUpEase: 4
+  smashDuration: 0.2
+  smashEase: 28
+  mergeParticles: {fileID: 7742498644740256985, guid: d38cdae3035c59b4888cf385d733e1dd, type: 3}
 --- !u!1 &272541056
 GameObject:
   m_ObjectHideFlags: 0
