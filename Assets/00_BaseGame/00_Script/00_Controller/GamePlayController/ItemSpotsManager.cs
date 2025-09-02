@@ -14,6 +14,8 @@ public class ItemSpotsManager : MonoBehaviour
     [Header("Animation Setting"), Space(5)] 
     [SerializeField] private float animationDuration = 0.15f;
     [SerializeField] private Ease animationEase = Ease.OutCubic;
+
+    [Header("Action"), Space(5)] public static Action<List<Item>> mergeStarted;
     
     private Dictionary<EItemName, ItemMergeData> itemMergeDataDictionary = new();
 
@@ -164,11 +166,13 @@ public class ItemSpotsManager : MonoBehaviour
         for (int i = 0; i < lsItems.Count; i++)
         {
             lsItems[i].Spot.Clear();
-            Destroy(lsItems[i].gameObject);
+            //Destroy(lsItems[i].gameObject);
         }
         if(itemMergeDataDictionary.Count <= 0) isBusy = false;
         else
             MoveAllItemsToTheLeft(HandleAllItemsMovedToTheLeft);
+        
+        mergeStarted?.Invoke(lsItems);
     }
 
     private void MoveAllItemsToTheLeft(Action callback)
