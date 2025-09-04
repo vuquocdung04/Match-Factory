@@ -15,7 +15,9 @@ public class ItemSpotsManager : MonoBehaviour
     [SerializeField] private float animationDuration = 0.15f;
     [SerializeField] private Ease animationEase = Ease.OutCubic;
 
-    [Header("Action"), Space(5)] public static Action<List<Item>> mergeStarted;
+    [Header("Action"), Space(5)]
+    public static Action<List<Item>> mergeStarted;
+    public static Action<Item> itemPickedUp;
     
     private Dictionary<EItemName, ItemMergeData> itemMergeDataDictionary = new();
 
@@ -46,6 +48,7 @@ public class ItemSpotsManager : MonoBehaviour
         }
 
         isBusy = true;
+        itemPickedUp?.Invoke(item);
         
         HandleItemClicked(item);
     }

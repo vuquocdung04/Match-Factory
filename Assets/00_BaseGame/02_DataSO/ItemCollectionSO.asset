@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bed7464392f4bd492b0f7ebab6659af, type: 3}
+  m_Name: ItemCollectionSO
+  m_EditorClassIdentifier: 
+  sharedMaterial: {fileID: 0}
+  items:
+  - itemType: 0
+    objectReference:
+      m_AssetGUID: c72b4005f711767438a1f4a36f7eb3a2
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 1
+    textureInfos:
+    - textureID: 
+      texture:
+        m_AssetGUID: c72b4005f711767438a1f4a36f7eb3a2
+        m_SubObjectName: 
+        m_SubObjectType: 
+        m_EditorAssetChanged: 1
+    - textureID: 
+      texture:
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
+        m_EditorAssetChanged: 0
+    - textureID: 
+      texture:
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
+        m_EditorAssetChanged: 0
+  - itemType: 0
+    objectReference:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    textureInfos:
+    - textureID: 
+      texture:
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
+        m_EditorAssetChanged: 0

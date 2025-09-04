@@ -6,7 +6,7 @@ public class Level : MonoBehaviour
     [Header("Element")]
     [SerializeField] private ItemPlacer itemPlacer;
 
-    public ItemLevelData[] GetGoal()
+    public ItemLevelData[] GetGoals()
     {
         return itemPlacer.GetGoal();
     }

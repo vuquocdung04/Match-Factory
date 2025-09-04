@@ -5,6 +5,7 @@ public class GamePlayController : Singleton<GamePlayController>
     public ItemSpotsManager itemSpotsManager;
     public MergeManager mergeManager;
     public LevelManager levelManager;
+    public GoalManager goalManager;
     protected override void OnAwake()
     {
         base.OnAwake();
@@ -19,5 +20,6 @@ public class GamePlayController : Singleton<GamePlayController>
         itemSpotsManager.Init();
         mergeManager.Init();
         levelManager.Init();
+        goalManager.Init();
     }
 }
