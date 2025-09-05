@@ -16,12 +16,7 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 4fef703f6584ea445a1676b20df3d540
-  m_SerializeEntries:
-  - m_GUID: c72b4005f711767438a1f4a36f7eb3a2
-    m_Address: Assets/00_BaseGame/01_GameAsset/Model 3D/Sprites/beachball.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 00a6aa4404bb18e4485fe39389a91761, type: 2}
   m_SchemaSet:
