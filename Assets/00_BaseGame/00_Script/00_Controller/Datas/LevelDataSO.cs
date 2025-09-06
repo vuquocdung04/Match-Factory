@@ -19,9 +19,6 @@ public class LevelDataSO : ScriptableObject
     public ItemLevelData[] GetGoals(int levelIndex)
     {
         var levelConfig = GetLevelConfiguration(levelIndex);
-        if (levelConfig == null)
-            return new ItemLevelData[0];
-            
         List<ItemLevelData> goals = new List<ItemLevelData>();
         foreach (var data in levelConfig.lsLevels)
         {
