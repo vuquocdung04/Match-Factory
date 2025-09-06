@@ -12,43 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bed7464392f4bd492b0f7ebab6659af, type: 3}
   m_Name: ItemCollectionSO
   m_EditorClassIdentifier: 
-  sharedMaterial: {fileID: 0}
+  sharedMaterial: {fileID: 2100000, guid: 798d717c36be1ec4ab478b5787fbf7dd, type: 2}
   items:
-  - itemType: 0
-    objectReference:
-      m_AssetGUID: c72b4005f711767438a1f4a36f7eb3a2
-      m_SubObjectName: 
-      m_SubObjectType: 
-      m_EditorAssetChanged: 1
+  - itemName: 5
+    itemPrfab: {fileID: 8164743223739560750, guid: 31633ea33704a4649bf33345cfdcb78a, type: 3}
     textureInfos:
-    - textureID: 
-      texture:
-        m_AssetGUID: c72b4005f711767438a1f4a36f7eb3a2
-        m_SubObjectName: 
-        m_SubObjectType: 
-        m_EditorAssetChanged: 1
-    - textureID: 
-      texture:
-        m_AssetGUID: 
-        m_SubObjectName: 
-        m_SubObjectType: 
-        m_EditorAssetChanged: 0
-    - textureID: 
-      texture:
-        m_AssetGUID: 
-        m_SubObjectName: 
-        m_SubObjectType: 
-        m_EditorAssetChanged: 0
-  - itemType: 0
-    objectReference:
-      m_AssetGUID: 
-      m_SubObjectName: 
-      m_SubObjectType: 
-      m_EditorAssetChanged: 0
+    - color: 3
+      texture: {fileID: 2800000, guid: 5b91fe40d5ed3844d9222efc6935408f, type: 3}
+    - color: 2
+      texture: {fileID: 2800000, guid: 77da1a58dce6b254d8979e71b5754352, type: 3}
+    - color: 9
+      texture: {fileID: 2800000, guid: ed63e2f603af2654a981b7737e7b979f, type: 3}
+    - color: 7
+      texture: {fileID: 2800000, guid: 351823b77a4939048a8ae87c593b5b6d, type: 3}
+    - color: 6
+      texture: {fileID: 2800000, guid: 292944d839370fe428e4d507858a9b76, type: 3}
+    - color: 8
+      texture: {fileID: 2800000, guid: 5ed64f883fe8f6a4080c6e7bc3c38baf, type: 3}
+    - color: 1
+      texture: {fileID: 2800000, guid: 0fd25255c482d324c837806c5cefa2c6, type: 3}
+    - color: 0
+      texture: {fileID: 2800000, guid: ac473015c17e05c4ab0ddab928f444f6, type: 3}
+  - itemName: 0
+    itemPrfab: {fileID: 0}
     textureInfos:
-    - textureID: 
-      texture:
-        m_AssetGUID: 
-        m_SubObjectName: 
-        m_SubObjectType: 
-        m_EditorAssetChanged: 0
+    - color: 0
+      texture: {fileID: 0}

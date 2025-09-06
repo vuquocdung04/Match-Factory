@@ -13,6 +13,12 @@ public class Item : MonoBehaviour
     [SerializeField] private Renderer objRenderer;
     [SerializeField] private Material baseMaterial;
 
+    public void SetMaterialDefault(Material material)
+    {
+        objRenderer.material = material;
+        baseMaterial = material;
+    }
+    
     public void AssignSpot(ItemSpot spot)
     {
         this.spot = spot;

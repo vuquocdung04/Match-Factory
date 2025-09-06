@@ -21,7 +21,7 @@ public class GoalManager : MonoBehaviour
     {
         for (int i = 0; i < goals.Length; i++)
         {
-            if(!goals[i].itemPrefab.ItemName.Equals(item.ItemName))
+            if(!goals[i].itemName.Equals(item.ItemName))
                 continue;
 
             goals[i].amount--;
@@ -34,7 +34,7 @@ public class GoalManager : MonoBehaviour
 
     private void CompleteGoal(int goalIndex)
     {
-        Debug.Log("Goal Index : " + goals[goalIndex].itemPrefab.ItemName);
+        Debug.Log("Goal Index : " + goals[goalIndex].itemName);
         CheckForLevelComplete();
     }
 
