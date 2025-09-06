@@ -17,9 +17,17 @@ MonoBehaviour:
     lsLevels:
     - itemName: 11
       color: 2
-      isGoal: 1
-      amount: 6
-    - itemName: 11
-      color: 7
+      amount: 30
       isGoal: 0
-      amount: 9
+    - itemName: 12
+      color: 4
+      amount: 15
+      isGoal: 0
+    - itemName: 10
+      color: 0
+      amount: 6
+      isGoal: 1
+  - currentLevel: 1
+    lsLevels: []
+  - currentLevel: 1
+    lsLevels: []

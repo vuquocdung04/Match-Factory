@@ -46,26 +46,24 @@ public class LevelConfiguration
 [System.Serializable]
 public struct ItemLevelData
 {
+    [HorizontalGroup("ItemData", Width = 0.2f)]
+    [HideLabel]
     public EItemName itemName;
-    [ValueDropdown("GetAvailableColors")]
+    
+    [HorizontalGroup("ItemData", Width = 0.2f)] 
+    [HideLabel]
     public EItemColor color;
-    public bool isGoal;
+    
+    [HorizontalGroup("ItemData")]
+    [HideLabel]
     [PropertyRange(3, 99)]
     [OnValueChanged("SnapToMultipleOfThree")]
     public int amount;
     
-    // Method cung cấp danh sách màu cho dropdown - dùng default colors
-    private ValueDropdownList<EItemColor> GetAvailableColors()
-    {
-        // Hiển thị tất cả màu - sẽ filter trong runtime
-        var dropdown = new ValueDropdownList<EItemColor>();
-        foreach (EItemColor color in System.Enum.GetValues(typeof(EItemColor)))
-        {
-            dropdown.Add(color.ToString(), color);
-        }
-        return dropdown;
-    }
-    
+    [HorizontalGroup("ItemData", Width = 20)]
+    [HideLabel]
+    public bool isGoal;
+
     private void SnapToMultipleOfThree()
     {
         amount = Mathf.RoundToInt(amount / 3f) * 3;
