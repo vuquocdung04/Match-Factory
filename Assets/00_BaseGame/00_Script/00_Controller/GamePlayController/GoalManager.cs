@@ -1,19 +1,17 @@
-
 using UnityEngine;
 
 public class GoalManager : MonoBehaviour
 {
-
     private ItemLevelData[] goals;
-    
+
     public void Init()
     {
-        LevelManager.levelSpawned += OnLevelSpawned;
+        OnLevelSpawned();
         ItemSpotsManager.itemPickedUp += OnItemPickedUp;
     }
-    public void OnDestroy()
+
+    private void OnDestroy()
     {
-        LevelManager.levelSpawned -= OnLevelSpawned;
         ItemSpotsManager.itemPickedUp -= OnItemPickedUp;
     }
 
@@ -21,11 +19,11 @@ public class GoalManager : MonoBehaviour
     {
         for (int i = 0; i < goals.Length; i++)
         {
-            if(!goals[i].itemName.Equals(item.ItemName))
+            if (!goals[i].itemName.Equals(item.ItemName))
                 continue;
 
             goals[i].amount--;
-
+            Debug.Log(goals[i].amount);
             if (goals[i].amount <= 0)
                 CompleteGoal(i);
             break;
@@ -34,22 +32,39 @@ public class GoalManager : MonoBehaviour
 
     private void CompleteGoal(int goalIndex)
     {
-        Debug.Log("Goal Index : " + goals[goalIndex].itemName);
+        Debug.Log("Goal completed: " + goals[goalIndex].itemName);
         CheckForLevelComplete();
     }
 
     private void CheckForLevelComplete()
     {
+        bool allCompleted = true;
         for (int i = 0; i < goals.Length; i++)
         {
             if (goals[i].amount > 0)
-                return;
+            {
+                allCompleted = false;
+                break;
+            }
         }
-        Debug.Log("Level Complete");
+        
+        if (allCompleted)
+        {
+            Debug.Log("Level Complete");
+            // Gọi event level complete nếu cần
+        }
     }
 
-    private void OnLevelSpawned(Level level)
+    private void OnLevelSpawned()
     {
-        goals = level.GetGoals();
+        var newGoals = GamePlayController.Instance.levelManager.GetGoals();
+        goals = newGoals;
+        Debug.Log("Goals count: " + goals.Length); // ← RỒI MỚI DÙNG
+    
+        // Log chi tiết để debug
+        for (int i = 0; i < goals.Length; i++)
+        {
+            Debug.Log($"Goal {i}: {goals[i].itemName}, Amount: {goals[i].amount}");
+        }
     }
 }

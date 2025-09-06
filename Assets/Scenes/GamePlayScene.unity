@@ -753,6 +753,8 @@ GameObject:
   m_Component:
   - component: {fileID: 804438586}
   - component: {fileID: 804438587}
+  - component: {fileID: 804438588}
+  - component: {fileID: 804438589}
   m_Layer: 2
   m_Name: Level Manager
   m_TagString: Untagged
@@ -787,65 +789,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 318d92ad329659a4695794b7c901f4db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levels:
-  - {fileID: 6237885011330093049, guid: d7741d30b7d66ae45a12e6a7018eb017, type: 3}
---- !u!1001 &903887248
-PrefabInstance:
+  itemPlacer: {fileID: 804438588}
+--- !u!114 &804438588
+MonoBehaviour:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1312344502919521062, guid: d7741d30b7d66ae45a12e6a7018eb017, type: 3}
-      propertyPath: m_Name
-      value: Level_00
-      objectReference: {fileID: 0}
-    - target: {fileID: 2864961226739604345, guid: d7741d30b7d66ae45a12e6a7018eb017, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 6.050758
-      objectReference: {fileID: 0}
-    - target: {fileID: 2864961226739604345, guid: d7741d30b7d66ae45a12e6a7018eb017, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.9805243
-      objectReference: {fileID: 0}
-    - target: {fileID: 2864961226739604345, guid: d7741d30b7d66ae45a12e6a7018eb017, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1.2102371
-      objectReference: {fileID: 0}
-    - target: {fileID: 2864961226739604345, guid: d7741d30b7d66ae45a12e6a7018eb017, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2864961226739604345, guid: d7741d30b7d66ae45a12e6a7018eb017, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2864961226739604345, guid: d7741d30b7d66ae45a12e6a7018eb017, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2864961226739604345, guid: d7741d30b7d66ae45a12e6a7018eb017, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2864961226739604345, guid: d7741d30b7d66ae45a12e6a7018eb017, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2864961226739604345, guid: d7741d30b7d66ae45a12e6a7018eb017, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2864961226739604345, guid: d7741d30b7d66ae45a12e6a7018eb017, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d7741d30b7d66ae45a12e6a7018eb017, type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804438585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c4cbd9d9a9c9a9488fad717d727dede, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lsItemDatas:
+  - itemCollection: {fileID: 11400000, guid: 7bd7cd149f0c7284a9843f66be870757, type: 2}
+    itemName: 11
+    color: 4
+    isGoal: 0
+    amount: 15
+  - itemCollection: {fileID: 11400000, guid: 7bd7cd149f0c7284a9843f66be870757, type: 2}
+    itemName: 11
+    color: 7
+    isGoal: 1
+    amount: 6
+  spawnZone: {fileID: 804438589}
+  seed: 11
+--- !u!65 &804438589
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804438585}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4.4603, y: 1.7298924, z: 4.879739}
+  m_Center: {x: -0.02642703, y: 0.3649462, z: -0.29088926}
 --- !u!1001 &1047239631
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1881,4 +1871,3 @@ SceneRoots:
   - {fileID: 374583281}
   - {fileID: 1316276018}
   - {fileID: 468020606}
-  - {fileID: 903887248}

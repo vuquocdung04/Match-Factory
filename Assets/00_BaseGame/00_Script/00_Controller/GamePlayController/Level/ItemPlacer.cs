@@ -47,21 +47,9 @@ public class ItemPlacer : MonoBehaviour
         }
         return goals.ToArray();
     }
-    
-    
-    [Button("Generate Item", ButtonSizes.Large)]
     private void GenerateItem()
     {
-        // Xóa các item cũ
-        while (transform.childCount > 0)
-        {
-            var t = transform.GetChild(0);
-            t.SetParent(null);
-            DestroyImmediate(t.gameObject);
-        }
-        
         Random.InitState(seed);
-        
         for (int i = 0; i < lsItemDatas.Count; i++)
         {
             var itemDataClone = lsItemDatas[i];
