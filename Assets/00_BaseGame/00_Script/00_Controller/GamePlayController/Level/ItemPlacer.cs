@@ -1,86 +1,50 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+
 using _00_BaseGame._00_Script._00_Controller.Datas;
-using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-[System.Serializable]
-public struct ItemLevelData
-{
-    public ItemCollectionSO itemCollection;
-    public EItemName itemName;
-    public EItemColor color;
-    public bool isGoal;
-    [PropertyRange(3, 99)]
-    [OnValueChanged("SnapToMultipleOfThree")]
-    public int amount;
-    
-    private void SnapToMultipleOfThree()
-    {
-        amount = Mathf.RoundToInt(amount / 3f) * 3;
-        amount = Mathf.Clamp(amount, 3, 99);
-    }
-}
-
 public class ItemPlacer : MonoBehaviour
 {
     [Header("Elements")]
-    [SerializeField] private List<ItemLevelData> lsItemDatas = new();
+    [SerializeField] private LevelDataSO levelDataSO;
+    [SerializeField] private ItemCollectionSO itemCollection;
+    [SerializeField] private int levelIndex;
     [SerializeField] private BoxCollider spawnZone;
     [SerializeField] private int seed;
 
     private void Start()
     {
+        //levelDataSO = GameController.Instance.dataContains.LevelDataSO;
         GenerateItem();
     }
 
     public ItemLevelData[] GetGoal()
     {
-        List<ItemLevelData> goals = new List<ItemLevelData>();
-        foreach (var data in this.lsItemDatas)
-        {
-            if(data.isGoal)
-                goals.Add(data);
-        }
-        return goals.ToArray();
+        return levelDataSO.GetGoals(levelIndex);
     }
     private void GenerateItem()
     {
+        //var itemCollection = GameController.Instance.dataContains.ItemCollection;
+        // lay item
+        var levelItems = levelDataSO.GetLevelItems(levelIndex);
         Random.InitState(seed);
-        for (int i = 0; i < lsItemDatas.Count; i++)
+        foreach (var itemDataClone in levelItems)
         {
-            var itemDataClone = lsItemDatas[i];
-            
-            // Lấy thông tin item từ collection
-            var itemData = itemDataClone.itemCollection.GetItemByName(itemDataClone.itemName);
-            if (itemData == null)
-            {
-                Debug.LogError($"Item {itemDataClone.itemName} not found in collection {itemDataClone.itemCollection.name}");
-                continue;
-            }
-            
-            Item itemPrefab = itemData.Value.itemPrfab;
+            // lay thong tin tu collection
+            var itemData = itemCollection!.GetItemByName(itemDataClone.itemName);
+            var itemPrefab = itemData?.itemPrfab;
             Texture2D targetTexture = null;
-            
-            // Tìm texture tương ứng với màu
-            foreach (var textureInfo in itemData.Value.textureInfos)
+
+
+            foreach (var textureInfo in itemData?.textureInfos!)
             {
                 if (textureInfo.color == itemDataClone.color)
                 {
-                    targetTexture = textureInfo.texture;
+                    targetTexture = textureInfo.texture;   
                     break;
                 }
             }
-            
-            if (targetTexture == null)
-            {
-                Debug.LogError($"Texture for color {itemDataClone.color} not found for item {itemDataClone.itemName}");
-                continue;
-            }
-            
             // Sinh các item
             for (int j = 0; j < itemDataClone.amount; j++)
             {
@@ -91,13 +55,12 @@ public class ItemPlacer : MonoBehaviour
                 {
                     itemInstance.transform.position = spawnPosition;
                     itemInstance.transform.rotation = Quaternion.Euler(Random.onUnitSphere * 360);
-                    
                     // Set material với texture tương ứng
-                    SetItemMaterial(itemInstance, itemDataClone.itemCollection.sharedMaterial, targetTexture);
+                    SetItemMaterial(itemInstance, itemCollection.sharedMaterial, targetTexture);
                 }
             }
         }
-    }
+    }   
 
     private void SetItemMaterial(Item item, Material sharedMaterial, Texture2D texture)
     {

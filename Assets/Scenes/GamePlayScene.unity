@@ -802,17 +802,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c4cbd9d9a9c9a9488fad717d727dede, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lsItemDatas:
-  - itemCollection: {fileID: 11400000, guid: 7bd7cd149f0c7284a9843f66be870757, type: 2}
-    itemName: 11
-    color: 4
-    isGoal: 0
-    amount: 15
-  - itemCollection: {fileID: 11400000, guid: 7bd7cd149f0c7284a9843f66be870757, type: 2}
-    itemName: 11
-    color: 7
-    isGoal: 1
-    amount: 6
+  levelDataSO: {fileID: 11400000, guid: ec9fac2fd7ffa8a4ca8cef528082ebc8, type: 2}
+  itemCollection: {fileID: 11400000, guid: 7bd7cd149f0c7284a9843f66be870757, type: 2}
+  levelIndex: 1
   spawnZone: {fileID: 804438589}
   seed: 11
 --- !u!65 &804438589
