@@ -11,5 +11,6 @@
     
     //Game
     ITEM_DESTROYED = 200,
+    ITEM_VACUUMED = 201,
 
 }

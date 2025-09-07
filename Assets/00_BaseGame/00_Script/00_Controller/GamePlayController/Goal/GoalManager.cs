@@ -1,3 +1,4 @@
+using EventDispatcher;
 using UnityEngine;
 
 public class GoalManager : MonoBehaviour
@@ -8,11 +9,13 @@ public class GoalManager : MonoBehaviour
     {
         OnLevelSpawned();
         ItemSpotsManager.itemPickedUp += OnItemPickedUp;
+        this.RegisterListener(EventID.ITEM_VACUUMED, OnItemVacuumed); // ← Thêm dòng này
     }
 
     private void OnDestroy()
     {
         ItemSpotsManager.itemPickedUp -= OnItemPickedUp;
+        this.RemoveListener(EventID.ITEM_VACUUMED, OnItemVacuumed); // ← Thêm dòng này
     }
 
     private void OnItemPickedUp(Item item)
@@ -36,6 +39,31 @@ public class GoalManager : MonoBehaviour
         }
     }
 
+    private void OnItemVacuumed(object param)
+    {
+        if (param is EItemName itemName)
+        {
+            for (int i = 0; i < goals.Length; i++)
+            {
+                if (goals[i].itemName == itemName)
+                {
+                    goals[i].amount--;
+                    Debug.Log($"Vacuumed: {itemName}, Remaining: {goals[i].amount}");
+                
+                    GoalCard.onGoalUpdated?.Invoke(goals[i].itemName, goals[i].amount);
+
+                    if (goals[i].amount <= 0)
+                    {
+                        GoalCard.onDone?.Invoke(goals[i].itemName);
+                        CompleteGoal(i);
+                    }
+                    break;
+                }
+            }
+        }
+    }
+    
+    
     private void CompleteGoal(int goalIndex)
     {
         Debug.Log("Goal completed: " + goals[goalIndex].itemName);

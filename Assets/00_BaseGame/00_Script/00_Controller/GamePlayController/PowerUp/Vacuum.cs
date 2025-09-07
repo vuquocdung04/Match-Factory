@@ -1,13 +1,14 @@
-
-using System;
 using System.Collections.Generic;
 using DG.Tweening;
+using EventDispatcher;
 using UnityEngine;
 
 public class Vacuum : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private Transform point;
+    private List<Item> itemsToDestroy = new List<Item>();
+    
     private void OnMouseDown()
     {
         PlayingAnimation();
@@ -20,6 +21,9 @@ public class Vacuum : MonoBehaviour
     
     public void VacuumPowerUp()
     {
+        // Clear list cũ
+        itemsToDestroy.Clear();
+        
         var levelManager = GamePlayController.Instance.levelManager;
         var lsItems = levelManager.GetItems();
         Dictionary<EItemName, List<Item>> itemGroups = new Dictionary<EItemName, List<Item>>();
@@ -33,19 +37,21 @@ public class Vacuum : MonoBehaviour
             }
             itemGroups[item.ItemName].Add(item);
         }
+        
         foreach (var group in itemGroups)
         {
             if (group.Value.Count >= 3)
             {
+                // LƯU ITEMS VÀO LIST
                 for (int i = 0; i < 3; i++)
                 {
                     if (group.Value[i] != null)
                     {
+                        itemsToDestroy.Add(group.Value[i]); // ← Thêm vào list
                         ItemAnimation(group.Value[i]);
                     }
                 }
-                
-                Debug.Log($"Destroyed 3 items of type: {group.Key}");
+                Debug.Log($"Found 3 items of type: {group.Key}");
                 return; // Chỉ xử lý 1 nhóm
             }
         }
@@ -57,6 +63,8 @@ public class Vacuum : MonoBehaviour
         item.transform.DORotate(Vector3.zero, 1f);
         item.transform.DOScale(Vector3.zero, 1f).OnComplete(delegate
         {
+            // Gửi event item bị vacuum
+            this.PostEvent(EventID.ITEM_VACUUMED, item.ItemName);
             item.DestroyItem();
         });
     }
