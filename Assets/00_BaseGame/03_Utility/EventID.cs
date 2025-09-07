@@ -8,5 +8,8 @@
     // ADS
     REWARDED_ADS_COMPLETED = 1000,
     INTERSTITIAL_ADS_COMPLETED = 1001,
+    
+    //Game
+    ITEM_DESTROYED = 200,
 
 }

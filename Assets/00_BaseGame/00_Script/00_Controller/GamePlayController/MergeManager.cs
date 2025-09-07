@@ -62,7 +62,7 @@ public class MergeManager : MonoBehaviour
     {
         for (int i = 0; i < lsItems.Count; i++)
         {
-            Destroy(lsItems[i].gameObject);
+            lsItems[i].DestroyItem();
         }
         
         ParticleSystem particles = Instantiate(mergeParticles, lsItems[1].transform.position, Quaternion.identity, transform);

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GoalManager : MonoBehaviour
 {
-    private ItemLevelData[] goals;
+    [SerializeField] private ItemLevelData[] goals;
 
     public void Init()
     {
@@ -26,9 +26,12 @@ public class GoalManager : MonoBehaviour
             Debug.Log(goals[i].amount);
             
             GoalCard.onGoalUpdated?.Invoke(goals[i].itemName, goals[i].amount);
-            
+
             if (goals[i].amount <= 0)
+            {
+                GoalCard.onDone?.Invoke(goals[i].itemName);
                 CompleteGoal(i);
+            }
             break;
         }
     }

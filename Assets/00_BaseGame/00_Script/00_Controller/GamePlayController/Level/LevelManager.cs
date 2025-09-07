@@ -1,4 +1,5 @@
 
+using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
@@ -24,5 +25,10 @@ public class LevelManager : MonoBehaviour
     public ItemLevelData[] GetGoals()
     {
         return generateLevelItem.GetGoal();
+    }
+
+    public List<Item> GetItems()
+    {
+        return generateLevelItem.LsItems;
     }
 }

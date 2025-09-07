@@ -1,5 +1,8 @@
 
+using System;
+using System.Collections.Generic;
 using _00_BaseGame._00_Script._00_Controller.Datas;
+using EventDispatcher;
 using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -12,11 +15,33 @@ public class GenerateLevelItem : MonoBehaviour
     [SerializeField] private int levelIndex;
     [SerializeField] private BoxCollider spawnZone;
     [SerializeField] private int seed;
-
+    [SerializeField] private List<Item> lsItems;
+    public List<Item> LsItems =>  lsItems; 
     private void Start()
     {
         //levelDataSO = GameController.Instance.dataContains.LevelDataSO;
+        this.RegisterListener(EventID.ITEM_DESTROYED, OnItemDestroyed);
         GenerateItem();
+    }
+
+    private void OnDestroy()
+    {
+        this.RemoveListener(EventID.ITEM_DESTROYED, OnItemDestroyed);
+    }
+
+    private void OnItemDestroyed(object param)
+    {
+        //Item clone =  param as Item;
+        //Item clone1 = (Item)param;
+        if (param is Item destroyedItem)
+        {
+            // Trực tiếp remove item khỏi list
+            bool removed = lsItems.Remove(destroyedItem);
+            if (removed)
+            {
+                Debug.Log($"Item {destroyedItem.ItemName} removed from list. Remaining: {lsItems.Count}");
+            }
+        }
     }
 
     public ItemLevelData[] GetGoal()
@@ -27,36 +52,38 @@ public class GenerateLevelItem : MonoBehaviour
     {
         //var itemCollection = GameController.Instance.dataContains.ItemCollection;
         // lay item
-        var levelItems = levelDataSO.GetLevelItems(levelIndex);
+        lsItems.Clear();
+        var itemLevelDatas = levelDataSO.GetLevelItems(levelIndex);
         Random.InitState(seed);
-        foreach (var itemDataClone in levelItems)
+        foreach (var itemLevelData in itemLevelDatas)
         {
             // lay thong tin tu collection
-            var itemData = itemCollection!.GetItemByName(itemDataClone.itemName);
+            var itemData = itemCollection!.GetItemByName(itemLevelData.itemName);
             var itemPrefab = itemData?.itemPrfab;
             Texture2D targetTexture = null;
 
 
             foreach (var textureInfo in itemData?.textureInfos!)
             {
-                if (textureInfo.color == itemDataClone.color)
+                if (textureInfo.color == itemLevelData.color)
                 {
                     targetTexture = textureInfo.texture;   
                     break;
                 }
             }
             // Sinh các item
-            for (int j = 0; j < itemDataClone.amount; j++)
+            for (int j = 0; j < itemLevelData.amount; j++)
             {
                 Vector3 spawnPosition = GetSpawnPosition();
                 Item itemInstance = PrefabUtility.InstantiatePrefab(itemPrefab, transform) as Item;
-                
                 if (itemInstance != null)
                 {
+                    itemInstance.SetGoal(itemLevelData.isGoal);
                     itemInstance.transform.position = spawnPosition;
                     itemInstance.transform.rotation = Quaternion.Euler(Random.onUnitSphere * 360);
                     // Set material với texture tương ứng
                     SetItemMaterial(itemInstance, itemCollection.sharedMaterial, targetTexture);
+                    lsItems.Add(itemInstance);
                 }
             }
         }
