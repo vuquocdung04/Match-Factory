@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class Item : MonoBehaviour
@@ -43,5 +44,13 @@ public class Item : MonoBehaviour
     public void Deselect()
     {
         objRenderer.materials = new Material[] { baseMaterial };
+    }
+    
+    [Button("Căn chỉnh vị trí theo anchor dưới", ButtonSizes.Large)]
+    private void AlignToBottomAnchor()
+    {
+        objRenderer.transform.localPosition = Vector3.zero;
+        float height = objRenderer.bounds.size.y/2;
+        objRenderer.transform.localPosition += Vector3.up * height;
     }
 }

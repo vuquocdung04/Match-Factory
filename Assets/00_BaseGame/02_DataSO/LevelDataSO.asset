@@ -16,18 +16,18 @@ MonoBehaviour:
   - currentLevel: 1
     lsLevels:
     - itemName: 11
-      color: 2
+      color: 1
       amount: 30
       isGoal: 0
-    - itemName: 12
-      color: 4
+    - itemName: 13
+      color: 1
       amount: 15
       isGoal: 0
-    - itemName: 10
-      color: 0
+    - itemName: 14
+      color: 1
       amount: 6
       isGoal: 1
-  - currentLevel: 1
+  - currentLevel: 2
     lsLevels: []
-  - currentLevel: 1
+  - currentLevel: 3
     lsLevels: []

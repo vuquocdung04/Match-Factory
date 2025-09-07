@@ -75,7 +75,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: 13
   rig: {fileID: 9027218392778994741}
-  objCollider: {fileID: 5467345783431429110}
+  objCollider: {fileID: 254055195004446849}
   objRenderer: {fileID: 4203596157543523119}
   baseMaterial: {fileID: 2100000, guid: 798d717c36be1ec4ab478b5787fbf7dd, type: 2}
 --- !u!1 &6951107022315900005
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 8514192773666180607}
   - component: {fileID: 8459849535473203577}
   - component: {fileID: 4203596157543523119}
-  - component: {fileID: 5467345783431429110}
+  - component: {fileID: 254055195004446849}
   m_Layer: 0
   m_Name: Renderer
   m_TagString: Untagged
@@ -106,7 +106,7 @@ Transform:
   m_GameObject: {fileID: 6951107022315900005}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.48768094, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -162,7 +162,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5467345783431429110
+--- !u!65 &254055195004446849
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

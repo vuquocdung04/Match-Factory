@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1127990843154153340}
   - component: {fileID: 8717658627314408771}
   - component: {fileID: 7984848375111831728}
-  - component: {fileID: 431938647515825104}
+  - component: {fileID: 7713404053754006936}
   m_Layer: 0
   m_Name: Renderer
   m_TagString: Untagged
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 2115892872283630331}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.47222173, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &431938647515825104
+--- !u!65 &7713404053754006936
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,6 +180,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: 12
   rig: {fileID: 6444144902401252399}
-  objCollider: {fileID: 431938647515825104}
+  objCollider: {fileID: 7713404053754006936}
   objRenderer: {fileID: 7984848375111831728}
   baseMaterial: {fileID: 2100000, guid: 798d717c36be1ec4ab478b5787fbf7dd, type: 2}
