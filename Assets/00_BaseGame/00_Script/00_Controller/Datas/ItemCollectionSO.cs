@@ -52,7 +52,7 @@ namespace _00_BaseGame._00_Script._00_Controller.Datas
         [HorizontalGroup("TextureSplit", Width = 0.4f)]
         [HideLabel]
         public EItemColor color;
-        
+        [HideLabel] public Sprite icon;
         [HorizontalGroup("TextureSplit")]
         [HideLabel]
         public Texture2D texture;

@@ -18,10 +18,10 @@ public class GamePlayController : Singleton<GamePlayController>
 
     private void Init()
     {
-        gameScene.Init();
         itemSpotsManager.Init();
         mergeManager.Init();
         levelManager.Init();
         goalManager.Init();
+        gameScene.Init();
     }
 }

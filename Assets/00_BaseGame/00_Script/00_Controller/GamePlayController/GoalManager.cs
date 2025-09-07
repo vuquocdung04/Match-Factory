@@ -24,6 +24,9 @@ public class GoalManager : MonoBehaviour
 
             goals[i].amount--;
             Debug.Log(goals[i].amount);
+            
+            GoalCard.onGoalUpdated?.Invoke(goals[i].itemName, goals[i].amount);
+            
             if (goals[i].amount <= 0)
                 CompleteGoal(i);
             break;

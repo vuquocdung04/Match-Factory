@@ -4,7 +4,7 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     [Header("Data")]
-    [SerializeField] private ItemPlacer itemPlacer;
+    [SerializeField] private GenerateLevelItem generateLevelItem;
     private int levelIndex;
     public void Init()
     {
@@ -23,6 +23,6 @@ public class LevelManager : MonoBehaviour
 
     public ItemLevelData[] GetGoals()
     {
-        return itemPlacer.GetGoal();
+        return generateLevelItem.GetGoal();
     }
 }

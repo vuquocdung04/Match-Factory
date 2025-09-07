@@ -1,0 +1,479 @@
+fileFormatVersion: 2
+guid: fa422d1376445664b9442b9c29fa2d90
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sactx-0-4096x4096-ASTC 4x4-GameplayAtlas-360c2a66_0
+      rect:
+        serializedVersion: 2
+        x: 673
+        y: 2154
+        width: 86
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d448e752e50a9894c9f7b8bc17a35d7d
+      internalID: 1545508378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-4096x4096-ASTC 4x4-GameplayAtlas-360c2a66_1
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 3839
+        width: 76
+        height: 97
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65c3fd8f896b910479b30a663ed087a4
+      internalID: -557190234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-4096x4096-ASTC 4x4-GameplayAtlas-360c2a66_2
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 2359
+        width: 86
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81782e7d4d8e9624994d59d3cede14d6
+      internalID: -1257380787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-4096x4096-ASTC 4x4-GameplayAtlas-360c2a66_3
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 2746
+        width: 84
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b64c5a3ab442c8498127845f4812ae4
+      internalID: -1236509556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-4096x4096-ASTC 4x4-GameplayAtlas-360c2a66_4
+      rect:
+        serializedVersion: 2
+        x: 929
+        y: 2043
+        width: 85
+        height: 99
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98aa97eeb19f3fe46a790d093dce4d71
+      internalID: -592244573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-4096x4096-ASTC 4x4-GameplayAtlas-360c2a66_5
+      rect:
+        serializedVersion: 2
+        x: 1133
+        y: 1983
+        width: 85
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3b35a63822fd504889560c808d7c89e
+      internalID: -1394659540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-4096x4096-ASTC 4x4-GameplayAtlas-360c2a66_6
+      rect:
+        serializedVersion: 2
+        x: 1228
+        y: 1998
+        width: 84
+        height: 101
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9859960475973b54693b5b45360f5946
+      internalID: 368167775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-4096x4096-ASTC 4x4-GameplayAtlas-360c2a66_7
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 1836
+        width: 107
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3365498da698c9438b26d2150664ab0
+      internalID: -704692610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-4096x4096-ASTC 4x4-GameplayAtlas-360c2a66_8
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 1577
+        width: 110
+        height: 119
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70cf92bb43fff5b478a198d1c0420685
+      internalID: -1504111400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-4096x4096-ASTC 4x4-GameplayAtlas-360c2a66_9
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 2102
+        width: 87
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a7d1337f47a39f489eef9974601e883
+      internalID: 750035090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-4096x4096-ASTC 4x4-GameplayAtlas-360c2a66_10
+      rect:
+        serializedVersion: 2
+        x: 2436
+        y: 1206
+        width: 89
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64b4050a2d5b3934b923dccffa30c282
+      internalID: -1115729692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-4096x4096-ASTC 4x4-GameplayAtlas-360c2a66_11
+      rect:
+        serializedVersion: 2
+        x: 2536
+        y: 1186
+        width: 89
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b60a191f6b956249ad58dd9375e4a27
+      internalID: -715088255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-4096x4096-ASTC 4x4-GameplayAtlas-360c2a66_12
+      rect:
+        serializedVersion: 2
+        x: 2842
+        y: 678
+        width: 88
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbf18c4c9d1a43943a3056657ad42249
+      internalID: -2088192915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-4096x4096-ASTC 4x4-GameplayAtlas-360c2a66_13
+      rect:
+        serializedVersion: 2
+        x: 2942
+        y: 570
+        width: 89
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8f35dbc8e555e641923d2206ab2aad4
+      internalID: -874599804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-4096x4096-ASTC 4x4-GameplayAtlas-360c2a66_14
+      rect:
+        serializedVersion: 2
+        x: 2841
+        y: 563
+        width: 89
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2afb7d94c89cf24cbcca78ad5354ae2
+      internalID: 1659239863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-4096x4096-ASTC 4x4-GameplayAtlas-360c2a66_15
+      rect:
+        serializedVersion: 2
+        x: 2455
+        y: 976
+        width: 87
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca38efd0fd2582a42a224582055da1c0
+      internalID: 1858176561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      sactx-0-4096x4096-ASTC 4x4-GameplayAtlas-360c2a66_0: 1545508378
+      sactx-0-4096x4096-ASTC 4x4-GameplayAtlas-360c2a66_1: -557190234
+      sactx-0-4096x4096-ASTC 4x4-GameplayAtlas-360c2a66_10: -1115729692
+      sactx-0-4096x4096-ASTC 4x4-GameplayAtlas-360c2a66_11: -715088255
+      sactx-0-4096x4096-ASTC 4x4-GameplayAtlas-360c2a66_12: -2088192915
+      sactx-0-4096x4096-ASTC 4x4-GameplayAtlas-360c2a66_13: -874599804
+      sactx-0-4096x4096-ASTC 4x4-GameplayAtlas-360c2a66_14: 1659239863
+      sactx-0-4096x4096-ASTC 4x4-GameplayAtlas-360c2a66_15: 1858176561
+      sactx-0-4096x4096-ASTC 4x4-GameplayAtlas-360c2a66_2: -1257380787
+      sactx-0-4096x4096-ASTC 4x4-GameplayAtlas-360c2a66_3: -1236509556
+      sactx-0-4096x4096-ASTC 4x4-GameplayAtlas-360c2a66_4: -592244573
+      sactx-0-4096x4096-ASTC 4x4-GameplayAtlas-360c2a66_5: -1394659540
+      sactx-0-4096x4096-ASTC 4x4-GameplayAtlas-360c2a66_6: 368167775
+      sactx-0-4096x4096-ASTC 4x4-GameplayAtlas-360c2a66_7: -704692610
+      sactx-0-4096x4096-ASTC 4x4-GameplayAtlas-360c2a66_8: -1504111400
+      sactx-0-4096x4096-ASTC 4x4-GameplayAtlas-360c2a66_9: 750035090
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
