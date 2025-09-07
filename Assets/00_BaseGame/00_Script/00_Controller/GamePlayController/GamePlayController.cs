@@ -1,4 +1,6 @@
 
+using Sirenix.OdinInspector;
+
 public class GamePlayController : Singleton<GamePlayController>
 {
     public GameScene gameScene;
