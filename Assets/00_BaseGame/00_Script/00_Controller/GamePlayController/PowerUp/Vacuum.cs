@@ -61,7 +61,7 @@ public class Vacuum : MonoBehaviour
     {
         item.transform.DOMove(point.position, 1f);
         item.transform.DORotate(Vector3.zero, 1f);
-        item.transform.DOScale(Vector3.zero, 1f).OnComplete(delegate
+        item.transform.DOScale(Vector3.one * 0.5f, 1f).OnComplete(delegate
         {
             // Gửi event item bị vacuum
             this.PostEvent(EventID.ITEM_VACUUMED, item.ItemName);

@@ -1,4 +1,4 @@
-using System;
+
 using EventDispatcher;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -69,5 +69,11 @@ public class Item : MonoBehaviour
         objRenderer.transform.localPosition = Vector3.zero;
         float height = objRenderer.bounds.size.y / 2;
         objRenderer.transform.localPosition += Vector3.up * height;
+    }
+
+    // Fan Powerup
+    public void ApplyRandomForce(float fanMagnitude)
+    {
+        rig.AddForce(Random.onUnitSphere * fanMagnitude, ForceMode.VelocityChange);
     }
 }

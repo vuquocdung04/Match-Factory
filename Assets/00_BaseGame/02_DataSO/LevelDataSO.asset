@@ -18,7 +18,7 @@ MonoBehaviour:
     - itemName: 11
       color: 3
       amount: 12
-      isGoal: 1
+      isGoal: 0
     - itemName: 10
       color: 0
       amount: 9
