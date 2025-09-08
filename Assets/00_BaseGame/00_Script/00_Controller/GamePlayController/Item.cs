@@ -1,4 +1,5 @@
 
+using DG.Tweening;
 using EventDispatcher;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -18,6 +19,14 @@ public class Item : MonoBehaviour
 
     [SerializeField] private bool isGoal;
     public bool IsGoal => isGoal;
+    
+    private bool isBusy;
+    public bool IsBusy => isBusy;
+
+    public void SetBusy(bool isBusy)
+    {
+        this.isBusy = isBusy;
+    }
 
     public void SetGoal(bool isGoal)
     {
@@ -46,6 +55,19 @@ public class Item : MonoBehaviour
         objCollider.enabled = false;
     }
 
+    public void ResetAll()
+    {
+        transform.SetParent(null);
+    
+        transform.DOScale(Vector3.one, 1f).OnComplete(delegate
+        {
+            objCollider.enabled = true;
+        });
+        // Kích hoạt physics ngay lập tức để AddForce hoạt động
+        rig.isKinematic = false;
+        rig.AddTorque(Random.onUnitSphere * 15f, ForceMode.Impulse);
+    }
+    
     public void Select(Material outLineMaterial)
     {
         objRenderer.materials = new Material[] { baseMaterial, outLineMaterial };

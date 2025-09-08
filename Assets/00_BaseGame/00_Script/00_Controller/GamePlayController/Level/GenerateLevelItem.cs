@@ -75,7 +75,7 @@ public class GenerateLevelItem : MonoBehaviour
             for (int j = 0; j < itemLevelData.amount; j++)
             {
                 Vector3 spawnPosition = GetSpawnPosition();
-                Item itemInstance = PrefabUtility.InstantiatePrefab(itemPrefab, transform) as Item;
+                Item itemInstance = PrefabUtility.InstantiatePrefab(itemPrefab) as Item;
                 if (itemInstance != null)
                 {
                     itemInstance.SetGoal(itemLevelData.isGoal);

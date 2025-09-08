@@ -31,6 +31,7 @@ public class MergeManager : MonoBehaviour
     {
         for (int i = 0; i < lsItems.Count; i++)
         {
+            lsItems[i].SetBusy(true);
             Vector3 targetPos = lsItems[i].transform.position + lsItems[i].transform.up * goUpDistance;
 
             Action callback = null;

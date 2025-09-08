@@ -264,6 +264,17 @@ public class ItemSpotsManager : MonoBehaviour
         return null;
     }
 
+    public ItemSpot GetNearestItemSpotFromLeft()
+    {
+        // Tìm item gần nhất về phía bên trái, bắt đầu từ phải sang trái
+        for (int i = spots.Length - 1; i >= 0; i--)
+        {
+            if (!spots[i].IsEmpty())
+                return spots[i];
+        }
+        return null;
+    }
+
     private void StoreSpots()
     {
         spots = new ItemSpot[itemSpotParent.childCount];
@@ -281,5 +292,20 @@ public class ItemSpotsManager : MonoBehaviour
         }
 
         return false;
+    }
+    
+    public void RemoveItemFromMergeData(Item item)
+    {
+        // Xóa item khỏi dictionary
+        if (itemMergeDataDictionary.ContainsKey(item.ItemName))
+        {
+            itemMergeDataDictionary[item.ItemName].lsItems.Remove(item);
+        
+            // Nếu list trống, xóa luôn key
+            if (itemMergeDataDictionary[item.ItemName].lsItems.Count == 0)
+            {
+                itemMergeDataDictionary.Remove(item.ItemName);
+            }
+        }
     }
 }
