@@ -31,6 +31,18 @@ public class GoalManager : MonoBehaviour
         }
     }
 
+    public void OnItemSpringed(EItemName itemNameParam)
+    {
+        for (int i = 0; i < goals.Length; i++)
+        {
+            if (goals[i].itemName == itemNameParam)
+            {
+                goals[i].amount++;
+                GoalCard.onGoalUpdated?.Invoke(goals[i].itemName, goals[i].amount);
+            }
+        }
+    }
+
     // Method chung xử lý logic goal
     private void ProcessItemGoal(EItemName itemName, string actionType = "")
     {
@@ -40,7 +52,7 @@ public class GoalManager : MonoBehaviour
 
             goals[i].amount--;
             Debug.Log($"{actionType}: {itemName}, Remaining: {goals[i].amount}");
-            
+
             GoalCard.onGoalUpdated?.Invoke(goals[i].itemName, goals[i].amount);
 
             if (goals[i].amount <= 0)
@@ -48,10 +60,11 @@ public class GoalManager : MonoBehaviour
                 GoalCard.onDone?.Invoke(goals[i].itemName);
                 CompleteGoal(i);
             }
+
             break;
         }
     }
-    
+
     private void CompleteGoal(int goalIndex)
     {
         Debug.Log("Goal completed: " + goals[goalIndex].itemName);
@@ -69,7 +82,7 @@ public class GoalManager : MonoBehaviour
                 break;
             }
         }
-        
+
         if (allCompleted)
         {
             Debug.Log("Level Complete");
@@ -82,7 +95,7 @@ public class GoalManager : MonoBehaviour
         var newGoals = GamePlayController.Instance.levelManager.GetGoals();
         goals = newGoals;
         Debug.Log("Goals count: " + goals.Length);
-    
+
         // Log chi tiết để debug
         for (int i = 0; i < goals.Length; i++)
         {

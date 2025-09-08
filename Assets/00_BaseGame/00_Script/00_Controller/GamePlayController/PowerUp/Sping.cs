@@ -16,8 +16,14 @@ public class Sping : MonoBehaviour
     private void SpringPowerUp()
     {
         var itemSpot = GamePlayController.Instance.itemSpotsManager.GetNearestItemSpotFromLeft();
+        if (itemSpot == null)
+        {
+            Debug.LogError("All itemSpot empty");
+            return;
+        }
         var item = itemSpot.Item;
         if(item.IsBusy) return;
+        GamePlayController.Instance.goalManager.OnItemSpringed(item.ItemName);
         GamePlayController.Instance.itemSpotsManager.RemoveItemFromMergeData(item);
         itemSpot.Clear();
         item.ResetAll();
