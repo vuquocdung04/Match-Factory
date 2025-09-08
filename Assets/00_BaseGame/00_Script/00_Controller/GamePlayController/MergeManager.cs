@@ -66,7 +66,14 @@ public class MergeManager : MonoBehaviour
             lsItems[i].DestroyItem();
         }
         
-        ParticleSystem particles = Instantiate(mergeParticles, lsItems[1].transform.position, Quaternion.identity, transform);
+        ParticleSystem particles = SimplePool2.Spawn(mergeParticles, lsItems[1].transform.position, Quaternion.identity);
         particles.Play();
+        StartCoroutine(WaitForParticleComplete(particles));
+    }
+
+    System.Collections.IEnumerator WaitForParticleComplete(ParticleSystem particle)
+    {
+        yield return new WaitForSeconds(mergeParticles.main.duration + mergeParticles.main.startLifetime.constantMax);
+        SimplePool2.Despawn(particle.gameObject);
     }
 }

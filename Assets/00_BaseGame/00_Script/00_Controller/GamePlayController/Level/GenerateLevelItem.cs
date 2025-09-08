@@ -1,9 +1,7 @@
 
-using System;
 using System.Collections.Generic;
 using _00_BaseGame._00_Script._00_Controller.Datas;
 using EventDispatcher;
-using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -50,45 +48,44 @@ public class GenerateLevelItem : MonoBehaviour
     }
     private void GenerateItem()
     {
-        //var itemCollection = GameController.Instance.dataContains.ItemCollection;
-        // lay item
         lsItems.Clear();
         var itemLevelDatas = levelDataSO.GetLevelItems(levelIndex);
         Random.InitState(seed);
+    
         foreach (var itemLevelData in itemLevelDatas)
         {
-            // lay thong tin tu collection
-            var itemData = itemCollection!.GetItemByName(itemLevelData.itemName);
-            var itemPrefab = itemData?.itemPrfab;
-            Texture2D targetTexture = null;
+            var itemData = itemCollection.GetItemByName(itemLevelData.itemName);
+            if (itemData == null) continue;
+        
+            var itemPrefab = itemData.Value.itemPrfab;
+            Texture2D targetTexture = GetTextureForItem(itemData.Value, itemLevelData.color);
 
-
-            foreach (var textureInfo in itemData?.textureInfos!)
-            {
-                if (textureInfo.color == itemLevelData.color)
-                {
-                    targetTexture = textureInfo.texture;   
-                    break;
-                }
-            }
-            // Sinh các item
             for (int j = 0; j < itemLevelData.amount; j++)
             {
                 Vector3 spawnPosition = GetSpawnPosition();
-                Item itemInstance = PrefabUtility.InstantiatePrefab(itemPrefab) as Item;
+                Item itemInstance = Instantiate(itemPrefab, spawnPosition, 
+                    Quaternion.Euler(Random.onUnitSphere * 360));
+            
                 if (itemInstance != null)
                 {
                     itemInstance.SetGoal(itemLevelData.isGoal);
-                    itemInstance.transform.position = spawnPosition;
-                    itemInstance.transform.rotation = Quaternion.Euler(Random.onUnitSphere * 360);
-                    // Set material với texture tương ứng
                     SetItemMaterial(itemInstance, itemCollection.sharedMaterial, targetTexture);
                     lsItems.Add(itemInstance);
                 }
             }
         }
     }   
-
+    private Texture2D GetTextureForItem(ItemData itemData, EItemColor targetColor)
+    {
+        foreach (var textureInfo in itemData.textureInfos)
+        {
+            if (textureInfo.color == targetColor)
+            {
+                return textureInfo.texture;
+            }
+        }
+        return null;
+    }
     private void SetItemMaterial(Item item, Material sharedMaterial, Texture2D texture)
     {
         if (item != null && sharedMaterial != null && texture != null)
@@ -99,6 +96,11 @@ public class GenerateLevelItem : MonoBehaviour
         }
     }
 
+    // private void SetItemMaterial(Item item, Material sharedMaterial, Texture2D texture)
+    // {
+    //     item.ApplyTextureProperty(sharedMaterial,texture);
+    // }
+    
     private Vector3 GetSpawnPosition()
     {
         float x = Random.Range(-spawnZone.size.x / 2, spawnZone.size.x / 2);

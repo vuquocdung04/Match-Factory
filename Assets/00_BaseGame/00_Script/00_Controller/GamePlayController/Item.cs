@@ -23,14 +23,16 @@ public class Item : MonoBehaviour
     private bool isBusy;
     public bool IsBusy => isBusy;
 
-    public void SetBusy(bool isBusy)
+    private bool isBusySpring;
+    
+    public void SetBusy(bool isBusyParam)
     {
-        this.isBusy = isBusy;
+        this.isBusy = isBusyParam;
     }
 
-    public void SetGoal(bool isGoal)
+    public void SetGoal(bool isGoalParam)
     {
-        this.isGoal = isGoal;
+        this.isGoal = isGoalParam;
     }
 
     public void SetMaterialDefault(Material material)
@@ -39,9 +41,23 @@ public class Item : MonoBehaviour
         baseMaterial = material;
     }
 
-    public void AssignSpot(ItemSpot spot)
+    public void ApplyTextureProperty(Material sharedMaterial, Texture2D texture)
     {
-        this.spot = spot;
+        // Gán material chia sẻ làm baseMaterial
+        baseMaterial = sharedMaterial;
+    
+        // Set material mặc định
+        objRenderer.material = sharedMaterial;
+    
+        // Áp dụng texture riêng qua PropertyBlock (cho rendering)
+        MaterialPropertyBlock propertyBlock = new MaterialPropertyBlock();
+        propertyBlock.SetTexture("_MainTex", texture);
+        objRenderer.SetPropertyBlock(propertyBlock);
+    }
+
+    public void AssignSpot(ItemSpot spotParam)
+    {
+        this.spot = spotParam;
     }
 
     public void DisableShadow()
@@ -58,10 +74,11 @@ public class Item : MonoBehaviour
     public void ResetAll()
     {
         transform.SetParent(null);
-    
+        isBusySpring = true;
         transform.DOScale(Vector3.one, 1f).OnComplete(delegate
         {
             objCollider.enabled = true;
+            isBusySpring = false;
         });
         // Kích hoạt physics ngay lập tức để AddForce hoạt động
         rig.isKinematic = false;
@@ -70,12 +87,12 @@ public class Item : MonoBehaviour
     
     public void Select(Material outLineMaterial)
     {
-        objRenderer.materials = new Material[] { baseMaterial, outLineMaterial };
+        objRenderer.materials = new[] { baseMaterial, outLineMaterial };
     }
 
     public void Deselect()
     {
-        objRenderer.materials = new Material[] { baseMaterial };
+        objRenderer.materials = new[] { baseMaterial };
     }
 
     public void DestroyItem()
@@ -96,6 +113,7 @@ public class Item : MonoBehaviour
     // Fan Powerup
     public void ApplyRandomForce(float fanMagnitude)
     {
+        if(isBusySpring) return;
         rig.AddForce(Random.onUnitSphere * fanMagnitude, ForceMode.VelocityChange);
     }
 }

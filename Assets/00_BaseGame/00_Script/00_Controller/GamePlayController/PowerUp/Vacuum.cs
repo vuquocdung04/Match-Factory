@@ -59,6 +59,9 @@ public class Vacuum : MonoBehaviour
     
     private void ItemAnimation(Item item)
     {
+        item.transform.DOKill();
+        item.DisablePhysic();
+        item.DisableShadow();
         item.transform.DOMove(point.position, 1f);
         item.transform.DORotate(Vector3.zero, 1f);
         item.transform.DOScale(Vector3.one * 0.5f, 1f).OnComplete(delegate
