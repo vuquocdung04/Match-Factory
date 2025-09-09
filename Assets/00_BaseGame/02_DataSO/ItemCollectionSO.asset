@@ -18,7 +18,7 @@ MonoBehaviour:
     itemPrfab: {fileID: 8164743223739560750, guid: 31633ea33704a4649bf33345cfdcb78a, type: 3}
     textureInfos:
     - color: 4
-      icon: {fileID: 0}
+      icon: {fileID: -115035632, guid: fa422d1376445664b9442b9c29fa2d90, type: 3}
       texture: {fileID: 2800000, guid: 5b91fe40d5ed3844d9222efc6935408f, type: 3}
     - color: 3
       icon: {fileID: -1236509556, guid: fa422d1376445664b9442b9c29fa2d90, type: 3}
@@ -27,7 +27,7 @@ MonoBehaviour:
       icon: {fileID: 368167775, guid: fa422d1376445664b9442b9c29fa2d90, type: 3}
       texture: {fileID: 2800000, guid: ed63e2f603af2654a981b7737e7b979f, type: 3}
     - color: 8
-      icon: {fileID: 0}
+      icon: {fileID: 1839927418, guid: fa422d1376445664b9442b9c29fa2d90, type: 3}
       texture: {fileID: 2800000, guid: 351823b77a4939048a8ae87c593b5b6d, type: 3}
     - color: 7
       icon: {fileID: -592244573, guid: fa422d1376445664b9442b9c29fa2d90, type: 3}
@@ -105,13 +105,13 @@ MonoBehaviour:
     itemPrfab: {fileID: 7082913675101415351, guid: 69dfc15b68edee74899a15d7089f06cb, type: 3}
     textureInfos:
     - color: 3
-      icon: {fileID: 0}
+      icon: {fileID: 750035090, guid: fa422d1376445664b9442b9c29fa2d90, type: 3}
       texture: {fileID: 2800000, guid: ee19cf63d40ca7040bc29353c1fbfd45, type: 3}
     - color: 2
-      icon: {fileID: 0}
+      icon: {fileID: -1504111400, guid: fa422d1376445664b9442b9c29fa2d90, type: 3}
       texture: {fileID: 2800000, guid: 7898152eaf577364fb3a1293ccf8f5b8, type: 3}
     - color: 1
-      icon: {fileID: 0}
+      icon: {fileID: -2124499249, guid: fa422d1376445664b9442b9c29fa2d90, type: 3}
       texture: {fileID: 2800000, guid: d54f1fb493ed5464f9e5134c3eb905b4, type: 3}
   - itemName: 15
     itemPrfab: {fileID: 8246182670404268940, guid: 38917ea0bdb8a4a4584a969e2e3e630a, type: 3}
@@ -126,10 +126,10 @@ MonoBehaviour:
       icon: {fileID: -874599804, guid: fa422d1376445664b9442b9c29fa2d90, type: 3}
       texture: {fileID: 2800000, guid: b41ca27dc5cd178428b8c92763248d85, type: 3}
     - color: 7
-      icon: {fileID: 0}
+      icon: {fileID: 670146794, guid: fa422d1376445664b9442b9c29fa2d90, type: 3}
       texture: {fileID: 2800000, guid: 80891d2ddbf00b540bb1b4c9be31b3a3, type: 3}
     - color: 9
-      icon: {fileID: 0}
+      icon: {fileID: -1115729692, guid: fa422d1376445664b9442b9c29fa2d90, type: 3}
       texture: {fileID: 2800000, guid: 5adc9d2a2721be74380cf293671da2e1, type: 3}
     - color: 2
       icon: {fileID: -2088192915, guid: fa422d1376445664b9442b9c29fa2d90, type: 3}
