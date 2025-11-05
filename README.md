@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 \# This is a simple \*clone\* of Match Factory! by Peak Studio.
 
 \## It focuses on the core gameplay: matching items, using power-ups, and completing goals.
@@ -43,8 +44,6 @@
 &nbsp;   \* Each level can have different goals!.
 
 &nbsp;   \* ⦁	!\[Levels Data](assets/img\_gameplay\_editlevel.png)
-
-
 
 
 
