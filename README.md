@@ -1,49 +1,42 @@
-<<<<<<< HEAD
-\# This is a simple \*clone\* of Match Factory! by Peak Studio.
 
-\## It focuses on the core gameplay: matching items, using power-ups, and completing goals.
+# This is a simple \*clone\* of Match Factory! by Peak Studio.
 
-
-
-\### 🎯 Gameplay
-
-\* Win/Lose Conditions, Goal tracking system.
+## It focuses on the core gameplay: matching items, using power-ups, and completing goals.
 
 
 
-\### ⚡ 3 Power-Up Boosters:
+### 🎯 Gameplay
 
-\* Vacuum: Sucks up 3 items in the level.
-
-\* Spring: Pushes one item off the shelf.
-
-\* Fan: Shuffles all items on screen.
+* Win/Lose Conditions, Goal tracking system.
 
 
 
-\### 📁 Data Setup:
+### ⚡ 3 Power-Up Boosters:
 
-&nbsp;\* Items Data:
+* Vacuum: Sucks up 3 items in the level.
 
-&nbsp;   \* Add item types (like apple, star, heart...).
+* Spring: Pushes one item off the shelf.
 
-&nbsp;   \* Assign textures and icons for each item.
-
-&nbsp;   \* Used in goals and gameplay.
-
-&nbsp;   \* !\[Item Data](assets/img\_itemData.png)
+* Fan: Shuffles all items on screen.
 
 
 
-&nbsp;\* Levels Data:
+### 📁 Data Setup:
 
-&nbsp;   \* Setup total number of items appearing in the level.
+* Items Data:
+    * Add item types (like apple, star, heart...).
+    * Assign textures and icons for each item.
+    * Used in goals and gameplay.
+    * ![Item Data](img_itemData.png)
 
-&nbsp;   \* Choose which items are “goal items” by ticking checkboxes.
 
-&nbsp;   \* Each level can have different goals!.
 
-&nbsp;   \* ⦁	!\[Levels Data](assets/img\_gameplay\_editlevel.png)
+* Levels Data:
+
+    * Setup total number of items appearing in the level.
+    * Choose which items are “goal items” by ticking checkboxes.
+    * Each level can have different goals!.
+    * ![Levels Data](img_gameplay_editlevel.png)
 
 
 
